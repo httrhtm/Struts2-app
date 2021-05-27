@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+    <!-- アクションのパッケージ定義 -->
+    <package name="default" namespace="/jsp" extends="struts-default">
+    	<!-- アクション -->
+        <!-- Login -->
+        <action name="login" class="action.LoginAction" method="execute">
+        	<result name="success">top.jsp</result>
+        	<result name="error">login.jsp</result>
+        </action>
+
+        <action name="logout" class="action.LoginAction" method="logout">
+        	<result name="success">login.jsp</result>
+        </action>
+
+        <!-- List -->
+        <action name="list" class="action.ListAction" method="execute">
+        	<result name="success">list.jsp</result>
+        </action>
+
+        <!-- Register -->
+        <action name="confirm" class="action.RegisterAction" method="confirm">
+        	<result name="success">confirm.jsp</result>
+        	<result name="error">register.jsp</result>
+        </action>
+
+        <action name="insert" class="action.RegisterAction" method="insert">
+        	<result type="redirectAction" name="success">list</result>
+        </action>
+
+        <!-- Delete -->
+         <action name="delete_confirm" class="action.DeleteAction" method="delete_confirm">
+        	<result name="success">delete/confirm.jsp</result>
+        </action>
+
+        <action name="delete" class="action.DeleteAction" method="delete">
+        	<result type="redirectAction" name="success">list</result>
+        </action>
+
+        <!-- Test -->
+
+        <!-- History -->
+
+    </package>
+</struts>

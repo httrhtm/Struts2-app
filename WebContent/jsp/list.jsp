@@ -24,13 +24,14 @@
 		<table class="table">
 
 			<!-- Question ループ処理 -->
-			<s:iterator value="%{qlist}" begin= "0" end="%{qlist.size() -1}" status="qsta">
+			<s:iterator value="qlist" end="qlist.size()" status="qst">
+			<s:set value="id" var="id"/>
 
 				<tr class="question">
 
 					<th>問題:</th>
-					<td><s:property value="qlist[#qsta.index].id"/></td>
-					<td><s:property value="qlist[#qsta.index].question" /></td>
+					<td><s:property value="id"/></td>
+					<td><s:property value="question" /></td>
 					<td>
 						<!-- Edit -->
 						<s:form action="" method="POST" name="form">
@@ -40,21 +41,22 @@
 					<td>
 						<!-- Delete -->
 						<s:form action="delete_confirm.action" method="POST" name="form" >
-							<s:hidden name="id" value="qlist[#qsta.index].id"></s:hidden>
+							<s:hidden name="id" value="%{#id}"></s:hidden>
 							<s:submit value="削除"></s:submit>
 						</s:form>
 					</td>
 				</tr>
 
 				<!-- Answer ループ処理 -->
-				<s:iterator value="%{calist}" begin= "0" end="%{calist.size() -1}" status="asta">
+				<s:iterator value="calist" end="calist.size()" status="cast">
+				<s:set value="questions_id" var="questions_id"/>
 
-				<s:if test="%{qlist[#qsta.index].id == calist[#asta.index].questions_id}">
+				<s:if test="%{#id == #questions_id}">
 
 					<tr class="answer">
 						<th>答え:</th>
-						<td><s:property value="calist[#asta.index].id"/></td>
-						<td><s:property value="calist[#asta.index].answer" /></td>
+						<td><s:property value="id"/></td>
+						<td><s:property value="answer" /></td>
 					</tr>
 
 				</s:if>

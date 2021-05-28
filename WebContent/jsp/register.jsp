@@ -24,19 +24,19 @@
 	<s:form action="confirm" method="POST" name="form" theme="simple" autocomplete="off">
 		<table>
 			<tr>
-				<th><s:text name="問題" /></th>
+				<th>問題:</th>
 				<td><s:textfield name="question" /></td>
 			</tr>
 
 			<tr>
-				<th><s:text name="答え" /></th>
+				<th>答え:</th>
 				<td>
 					<s:textfield name="answer" value="" />
 				</td>
 			</tr>
 
 			<tr>
-				<th><s:text name="答え" /></th>
+				<th>答え:</th>
 				<td><s:textfield name="answer" value="" /></td>
 			</tr>
 		</table>

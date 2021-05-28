@@ -16,6 +16,11 @@
         <h1>新規登録</h1>
     </div>
 
+    <div class="header-nav">
+		<s:a action="logout">Logout</s:a>
+		<s:a action="top">Top</s:a>
+	</div>
+
 	<s:form action="confirm" method="POST" name="form" theme="simple" autocomplete="off">
 		<table>
 			<tr>

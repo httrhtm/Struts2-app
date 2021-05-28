@@ -14,7 +14,7 @@
 
     <div class="header-nav">
 		<s:a action="logout">Logout</s:a>
-		<s:a href="/Struts2App/jsp/top.jsp">Top</s:a>
+		<s:a action="top">Top</s:a>
 	</div>
 
 	<s:form action="delete" method="POST" name="form">

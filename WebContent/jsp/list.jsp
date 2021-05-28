@@ -13,11 +13,11 @@
 
 	<div class="header-nav">
 		<s:a action="logout">Logout</s:a>
-		<s:a href="/Struts2App/jsp/top.jsp">Top</s:a>
+		<s:a action="top">Top</s:a>
 	</div>
 
 	<div class="register-btn">
-		<s:a href="/Struts2App/jsp/register.jsp">新規登録</s:a>
+		<s:a href="register">新規登録</s:a>
 	</div>
 
 	<div class="main">

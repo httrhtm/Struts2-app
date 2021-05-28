@@ -38,8 +38,6 @@ public class DeleteAction {
 	 */
 	public String delete_confirm() throws Exception {
 
-		System.out.println(id);
-
 		QuestionsDao qdao = new QuestionsDao();
 		CorrestAnswersDao cadao = new CorrestAnswersDao();
 

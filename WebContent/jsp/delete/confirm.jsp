@@ -28,15 +28,16 @@
 				<s:hidden name="id" value="%{#id}"></s:hidden>
 			</tr>
 
-			<s:iterator value='calist'>
 
 					<tr>
+					<s:iterator value='calist'>
 						<th>答え:</th>
 						<td><s:property value="id"/></td>
 						<td><s:textfield name="answer" readonly="true" value="%{answer}"/></td>
+					</s:iterator>
 					</tr>
 
-			</s:iterator>
+
 		</table>
 
 		<div class="back-btn">

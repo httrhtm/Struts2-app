@@ -1,6 +1,5 @@
 package action;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import com.opensymphony.xwork2.ActionSupport;
@@ -17,8 +16,8 @@ public class ListAction extends ActionSupport {
 
 	private static final long serialVersionUID = 1L;
 
-	private List<Question> qlist = new ArrayList<Question>();
-	private List<CorrectAnswer> calist = new ArrayList<CorrectAnswer>();
+	private List<Question> qlist;
+	private List<CorrectAnswer> calist;
 
 	public List<Question> getQlist() {
 		return qlist;

@@ -21,7 +21,7 @@ public class DBConnection {
         }
     }
 
-    public static Connection getConnect() {
+    public static Connection getConnection() {
         String user = "root";
         String password = "hacchan82";
         String url = "jdbc:mysql://localhost:3306/struts2_db?serverTimezone=JST";

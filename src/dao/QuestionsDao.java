@@ -10,59 +10,40 @@ import bean.Question;
 
 public class QuestionsDao {
 
-	private static ArrayList<Question> qlist = new ArrayList<Question>();
-
-	private static Connection con;
-    private static PreparedStatement ps = null;
-    private static ResultSet rs = null;
-
-    public QuestionsDao() throws Exception {
-		DBConnection.getConnect();
-    }
-
     /**
 	 * 全件取得
 	 */
     public List<Question> findAll() throws Exception {
 
-    	con = DBConnection.getConnect();
+    	List<Question> qlist = new ArrayList<Question>();
 
-    	String sql = "select * from questions";
-    	ps = con.prepareStatement(sql);
-    	rs = ps.executeQuery();
+		Connection conn = DBConnection.getConnection();
+		PreparedStatement ps = conn
+				.prepareStatement("SELECT * FROM questions");
+		ResultSet rs = ps.executeQuery();
 
-    	while (rs.next()) {
-    		int id = rs.getInt("id");
-    		String question = rs.getString("question");
-
-    		Question bean = new Question(id, question);
-    		qlist.add(bean);
-    	}
-
-    	if (rs != null) {
-			rs.close();
-		}
-		if (ps != null) {
-			ps.close();
+		while (rs.next()) {
+			int id = rs.getInt("id");
+			String question = rs.getString("question");
+			Question q = new Question(id, question);
+			qlist.add(q);
 		}
 
-    	return qlist;
+		return qlist;
+
     }
 
     /**
 	 * 新規作成
 	 */
 	public void create(Question q) throws Exception {
-		con = DBConnection.getConnect();
+		Connection conn = DBConnection.getConnection();
 
-		String sql = "insert into questions (question) values (?)";
-		ps = con.prepareStatement(sql);
+		PreparedStatement ps = conn
+				.prepareStatement("insert into questions (question) values (?)");
 		ps.setString(1, q.getQuestion());
 		ps.executeUpdate();
 
-		if (rs != null) {
-			rs.close();
-		}
 		if (ps != null) {
 			ps.close();
 		}
@@ -72,14 +53,15 @@ public class QuestionsDao {
 	 * idが一致するquestionを取得
 	 */
 	public Question findById(int id) throws Exception {
-		con = DBConnection.getConnect();
-
-		String sql = "select question FROM questions WHERE id = ?";
-		ps = con.prepareStatement(sql);
-		ps.setInt(1, id);
-		rs = ps.executeQuery();
+		Connection conn = DBConnection.getConnection();
 
 		Question q = new Question();
+
+		PreparedStatement ps = conn
+				.prepareStatement("select question FROM questions WHERE id = ?");
+		ps.setInt(1, id);
+		ResultSet rs = ps.executeQuery();
+
 		while (rs.next()) {
 			String question = rs.getString("question");
 			q.setQuestion(question);
@@ -98,17 +80,13 @@ public class QuestionsDao {
 	 * 削除
 	 */
 	public void delete(int id) throws Exception {
-		con = DBConnection.getConnect();
+		Connection conn = DBConnection.getConnection();
 
-		String sql = "delete from questions WHERE id = ?";
-
-		ps = con.prepareStatement(sql);
+		PreparedStatement ps = conn
+				.prepareStatement("delete from questions WHERE id = ?");
 		ps.setInt(1, id);
 		ps.executeUpdate();
 
-		if (rs != null) {
-			rs.close();
-		}
 		if (ps != null) {
 			ps.close();
 		}

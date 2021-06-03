@@ -16,12 +16,21 @@
         	<result name="success">login.jsp</result>
         </action>
 
+        <!-- Top -->
+        <action name="top">
+			<result>top.jsp</result>
+		</action>
+
         <!-- List -->
         <action name="list" class="action.ListAction" method="execute">
         	<result name="success">list.jsp</result>
         </action>
 
         <!-- Register -->
+        <action name="register">
+			<result>register.jsp</result>
+		</action>
+
         <action name="confirm" class="action.RegisterAction" method="confirm">
         	<result name="success">confirm.jsp</result>
         	<result name="error">register.jsp</result>

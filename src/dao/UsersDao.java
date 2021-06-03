@@ -17,7 +17,7 @@ public class UsersDao {
     public static User getUser(int id) throws SQLException {
 
     	//DBConnectionからデータベースへの接続を得る
-    	conn = DBConnection.getConnect();
+    	conn = DBConnection.getConnection();
 
     	//SQLステートメント、オブジェクトの作成
     	String sql = "select * from users where id=?";

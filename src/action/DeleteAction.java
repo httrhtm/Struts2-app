@@ -58,8 +58,6 @@ public class DeleteAction {
         qdao.delete(id);
         cadao.delete(id);
 
-        System.out.println(id);
-
         return "success";
 	}
 

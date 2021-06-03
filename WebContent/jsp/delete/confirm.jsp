@@ -14,7 +14,7 @@
 
     <div class="header-nav">
 		<s:a action="logout">Logout</s:a>
-		<s:a href="/Struts2App/jsp/top.jsp">Top</s:a>
+		<s:a action="top">Top</s:a>
 	</div>
 
 	<s:form action="delete" method="POST" name="form">
@@ -22,20 +22,22 @@
 			<s:set value="id" var="id"/>
 
 			<tr>
-				<th><s:text name="問題" /></th>
+				<th>問題:</th>
+				<td><s:property value="id"/></td>
 				<td><s:textfield name="question" readonly="true" value="%{q.question}" /></td>
 				<s:hidden name="id" value="%{#id}"></s:hidden>
 			</tr>
 
-			<s:iterator value='calist'>
-			<s:set value="questions_id" var="questions_id"/>
 
 					<tr>
-						<th><s:text name="答え" /></th>
+					<s:iterator value='calist'>
+						<th>答え:</th>
+						<td><s:property value="id"/></td>
 						<td><s:textfield name="answer" readonly="true" value="%{answer}"/></td>
+					</s:iterator>
 					</tr>
 
-			</s:iterator>
+
 		</table>
 
 		<div class="back-btn">
